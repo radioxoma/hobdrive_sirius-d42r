@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters namespace="Sirius" description="Sirius D42R additional PIDs">
+
+  <parameter id="MAF">
+    <description>
+      <name>MAF</name>
+      <unit>mg/t</unit>
+      <description>Mass air flow</description>
+    </description>
+    <base-raw> Core </base-raw>
+    <word-13>0.0212766</word-13>
+  </parameter>
+
+  <!-- "ShiftPositionEstimated", "_ShiftPositionLatin" -->
+  <parameter id="ECUShiftPosition">
+    <description>
+      <name>Gear (ECU)</name>
+      <description>Current gear. Clutch must be on (ECU compares RPM and wheel rotation).</description>
+    </description>
+    <base-raw> Core </base-raw>
+    <value-23>1</value-23>
+  </parameter>
+
+
+
+  <parameter id="KnockSignal">
+    <description>
+      <name>Knock sensor</name>
+      <unit>V</unit>
+      <description>Knock sensor voltage</description>
+    </description>
+    <base-raw> Core1 </base-raw>
+    <word-8>0.00487804878</word-8>
+  </parameter>
+
+
+
+  <parameter id="ECUOdometer">
+    <description>
+      <name>Odometer (ECU)</name>
+      <unit>km</unit>
+      <description>ECU odometer (precision 0.1 km). Hobdrive automatically suggests to add missing trip if sensor value is differernt from calculated Odometer</description>
+    </description>
+    <raw>2105</raw>
+    <dword-28>0.1</dword-28>
+  </parameter>
+
+<!--   <parameter id="ECUOdometerIPC">
+    <description>
+      <name>Odometer (IPC)</name>
+      <unit>km</unit>
+      <description>Tries to estimate Instrument Panel Cluster odometer</description>
+    </description>
+    <base> ECUOdometer </base>
+    <eval>Sensor_Value * 1.027825</eval>
+  </parameter> -->
+
+  <parameter id="ECUIgnCnt">
+    <description>
+      <name>Ignition counter</name>
+      <unit></unit>
+      <description>How many times key was in 'on' position</description>
+    </description>
+    <raw>2107</raw>
+    <word-13>1</word-13>
+  </parameter>
+
+
+  <parameter id="CoreA">
+    <raw> 210B </raw>
+    <valuea>0</valuea>
+  </parameter>
+
+
+  <parameter id="ECUGasPumpState">
+    <description>
+      <name>Gas pump state</name>
+      <unit>0ff/On</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-2>1</value-2>
+    <bit>0</bit>
+  </parameter>
+
+  <parameter id="O2HeaterRelay">
+    <description>
+      <name>O2 sensor heater</name>
+      <description>1 on cold engine start, 0 on not rotating or on warm engine</description>
+      <unit>0ff/On</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-3>1</value-3>
+  </parameter>
+
+  <parameter id="ECUEngIdle">
+    <description>
+      <name>Engine idle</name>
+      <description>Engine in idle mode: ThrottleClosed and RPM below 1300 RPM. Car may be even running if release clutch slowly. Engine is not idle during sharp deceleration when FuelSystemStatus_Trim activated.</description>
+      <unit>No/Yes</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-4>1</value-4>
+    <bit>0</bit>
+  </parameter>
+
+<!-- Не считается отсечка при скоростях выше 70км/ч http://hobdrive.com/forum/viewtopic.php?f=12&t=491 -->
+<!-- <parameter id="ECUInjOff"> -->
+<parameter id="FuelSystemStatus_Trim">
+    <description>
+      <name>ECU Fuel Trim</name>
+      <description>Fuel is not injected on engine deceleration: if ThrottleClosed and RPM is greater than 1300 RPM (so trim won't lead to engine stop). Used in Hobdrive fuel economy calculation if FSS enabled.</description>
+      <unit>No/Yes</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-8>1</value-8>
+    <bit>0</bit>
+  </parameter>
+
+  <parameter id="FullLoadState">
+    <description>
+      <name>Full load</name>
+      <unit>No/Yes</unit>
+      <description>Unknown sensor. Always 0 even on wide open throttle.</description>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-9>1</value-9>
+    <bit>0</bit>
+  </parameter>
+
+  <parameter id="ThrottleClosed">
+    <description>
+      <name>Throttle closed</name>
+      <description>Closed throttle position sensor (CTPS). ThrottlePosition interpteted as closed while &lt;1%.  Works always when ignition is on, even on stopped engine.</description>
+      <unit>No/Yes</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-10>1</value-10>
+    <bit>0</bit>
+  </parameter>
+
+  <parameter id="AirFanSlowRelay">
+    <!-- Thermostat keeps ECT around 79-80 °С on B12D1 engine -->
+    <!-- Температура включения на низких оборотах 96 °С, выключения на низких оборотах 94,5 °С? -->
+    <description>
+      <name>Fan low</name>
+      <description>Fan rotating at low speed</description>
+      <unit>0ff/On</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-20>1</value-20>
+    <bit>0</bit>
+  </parameter>
+
+  <parameter id="AirFanFastRelay">
+    <!-- Температура включения на высоких оборотах 99 °С, температура выключения на высоких оборотах 97,5 °С -->
+    <description>
+      <name>Fan high</name>
+      <description>Fan rotating at high speed</description>
+      <unit>0ff/On</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-21>1</value-21>
+    <bit>0</bit>
+  </parameter>
+
+
+  <parameter id="ECUFuelLevelInstantL">
+    <description>
+      <name>Fuel Level instant</name>
+      <description>Real tank instant fuel level</description>
+      <unit>l</unit>
+    </description>
+    <base> ECUFuelLevel </base>
+    <base2> Sirius.ReversedTankVolume </base2>
+    <eval> Sensor_Value / 100 * Sensor2_Value</eval>
+  </parameter>
+
+
+  <parameter id="ECUFuelLevelAvg">  <!-- Fuel.FuelInTank -->
+    <description>
+      <name>Fuel Level Avg</name>
+      <description>Real tank fuel level (ECU average)</description>
+      <unit>percent</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <eval>(get(23) - 18) * 2 / 255 * 100</eval>
+    <!-- Range 27? to 142 -->
+  </parameter>
+  <parameter id="ECUFuelLevelAvgL">  <!-- Fuel.FuelInTank -->
+    <description>
+      <name>Fuel Level Avg</name>
+      <description>Real tank fuel level (ECU average)</description>
+      <unit>l</unit>
+    </description>
+    <base> Sirius.ECUFuelLevelAvg </base>
+    <base2> Sirius.ReversedTankVolume </base2> <!-- Test needed -->
+    <eval>Sensor_Value / 100 * Sensor2_Value </eval>
+  </parameter>
+
+
+  <parameter id="Core0C">
+    <raw> 210C </raw>
+    <valuea>0</valuea>
+  </parameter>
+
+  <parameter id="Drive">
+    <description>
+      <name>Drive</name>
+      <description>Vehicle is moving?</description>
+      <unit>No/Yes</unit>
+    </description>
+    <base-raw> Core0C </base-raw>
+    <value-2>1</value-2>
+    <bit>0</bit>
+  </parameter>
+
+  <parameter id="ClosedLoop">
+    <description>
+      <name>Closed loop</name>
+      <description>Same as FuelSystemStatus. Using oxygen sensor or no (open loop due to cold engime, fuel trim, possible on high load?)</description>
+      <unit>No/Yes</unit>
+    </description>
+    <base-raw> Core0C </base-raw>
+    <value-5>1</value-5>
+    <bit>0</bit>
+  </parameter>
+
+  <parameter id="PowertrainState">
+    <description>
+      <name>Engine state</name>
+      <description>0-не вращается, 1- один раз при заводе-стартер?, 2-ХХ, 3-'не ХХ' с подачей топлива (открыта ДЗ), 4-начало спада оборотов, 5-отсечка топлива</description>
+    </description>
+    <base-raw> Core0C </base-raw>
+    <value-33></value-33>
+  </parameter>
+
+
+  <parameter id="CoreD">
+    <raw> 210D </raw>
+    <valuea>0</valuea>
+  </parameter>
+
+  <parameter id="NotAccel">
+    <description>
+      <name>notAccel</name>
+      <description>Equal to ThrottleClosed</description>
+      <unit>No/Yes</unit>
+    </description>
+    <base-raw> CoreD </base-raw>
+    <value-6>1</value-6>
+    <bit>0</bit>
+  </parameter>
+
+  <parameter id="NeedIdleRPM">
+    <description>
+      <name>Needed idle RPM</name>
+      <description>From 1275 RPM on cold (-16 C) to 713 RPM on heated up (79.5 C) engine(</description>
+      <unit>rpm</unit>
+    </description>
+    <base-raw> CoreD </base-raw>
+    <word-14>1</word-14>
+  </parameter>
+
+
+
+  <parameter id="ECUSomeText">
+    <description>
+      <name>ECU ID</name>
+    </description>
+    <raw> 210E </raw>
+    <offset> 4 </offset>
+    <text/>
+  </parameter>
+
+
+  <parameter id="Brake">
+    <description>
+      <name>Brake</name>
+      <description>Not working, dont know what it is</description>
+      <unit>No/Yes</unit>
+    </description>
+    <raw>2114</raw>
+    <value-3></value-3>
+  </parameter>
+
+
+  <parameter id="RunTime">
+    <description>
+      <name>Run time</name>
+      <unit>seconds</unit>
+      <description>Time since engine start</description>
+    </description>
+    <raw>2117</raw>
+    <!-- Default precision 0.1 second -->
+    <dword-6>0.1</dword-6>
+  </parameter>
+
+
+<!--   <parameter id="ReversedGPSOBD2SpeedDiff">
+    <description>
+      <name>GPS vs OBD Speed</name>
+      <unit>km/h</unit>
+      <description>GPS vs OBD speed (with correction coefficient), replacement for paid GPSOBD2SpeedDiff</description>
+    </description>
+    <base> GPS.GPSSpeed </base>
+    <base2> OBD2.Speed </base2>
+    <eval>Sensor_Value - Sensor2_Value</eval>
+  </parameter> -->
+
+  <!-- <item id="TestValue1" text-evaluator='${round(svalue("FuelInTank") / svalue("FuelLevel") * 100)}' /> -->
+  <parameter id="ReversedTankVolume">
+    <description>
+      <name>Tank volume</name>
+      <unit>l</unit>
+      <description>Reverse-engeneered tank volume (user input)</description>
+    </description>
+    <base> FuelInTank </base>
+    <base2> FuelLevel </base2>
+    <eval> Sensor_Value / Sensor2_Value * 100 </eval>
+  </parameter>
+
+  <parameter id="CanRunNoIdling">
+    <description>
+      <name>Запас хода</name>
+      <unit>km</unit>
+      <description>Запас непрерывного хода на остатке топлива по ДУТ</description>
+      <description lang="en">Distance to empty if you will run without jams</description>
+    </description>
+    <base> Sirius.ECUFuelLevelAvgL </base>
+    <base2> NoIdling.FuelEconomy </base2>
+    <eval> Sensor_Value / Sensor2_Value * 100 </eval>
+  </parameter>
+
+  <parameter id="CanRun6l100km">
+    <description>
+      <name>Запас хода (6л/100км)</name>
+      <unit>km</unit>
+      <description>Запас непрерывного хода на остатке топлива при расходе 6л/100км</description>
+    </description>
+    <base> Sirius.ECUFuelLevelAvgL </base>
+    <eval> Sensor_Value / 6 * 100 </eval>
+  </parameter>
+
+  <parameter id="TestValue0">
+    <description>
+      <name>TestValue0 name</name>
+      <description>TestValue0 description</description>
+      <unit>percent</unit>
+    </description>
+    <base></base>
+    <eval>0.0</eval>
+  </parameter>
+  <parameter id="TestValuePoint9">
+    <description>
+      <name>TestValuePoint9 name</name>
+      <description>TestValuePoint9 description</description>
+      <unit>percent</unit>
+    </description>
+    <base></base>
+    <eval>0.9</eval>
+  </parameter>
+  <parameter id="TestValue1">
+    <base></base>
+    <eval>1.0</eval>
+  </parameter>
+  <parameter id="TestValue2">
+    <description>
+      <name>TestValue2 name</name>
+      <description>TestValue2 description</description>
+      <unit>percent</unit>
+    </description>
+    <base></base>
+    <eval>2.0</eval>
+  </parameter>
+  <parameter id="TestValue60">
+    <description>
+      <name>TestValue60 name</name>
+      <description>TestValue60 description</description>
+      <unit>percent</unit>
+    </description>
+    <base></base>
+    <eval>60.0</eval>
+  </parameter>
+  <parameter id="TestValue120">
+    <base></base>
+    <eval>120.0</eval>
+  </parameter>
+  <parameter id="TestValue100Seconds">
+    <description>
+      <name>Test runtime</name>
+      <unit>seconds</unit>
+      <description>Some value in seconds</description>
+    </description>
+    <base></base>
+    <eval>100.0</eval>
+  </parameter>
+
+  <parameter id="Verify_ClutchSlipping">
+    <description>
+      <unit>0ff/On</unit>
+    </description>
+    <base-raw> CoreA </base-raw>
+    <value-24>1</value-24>
+    <bit>0</bit>
+  </parameter>
+
+</parameters>
