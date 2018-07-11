@@ -202,6 +202,16 @@
     <eval>Sensor_Value / 100 * Sensor2_Value </eval>
   </parameter>
 
+  <parameter id="Verify_ClutchSlipping">
+    <!-- Needs verifying -->
+    <description>
+      <unit>0ff/On</unit>
+    </description>
+    <base-raw> Core0B </base-raw>
+    <value-24>1</value-24>
+    <bit>0</bit>
+  </parameter>
+
   <parameter id="Speed0B">
     <!-- Untested -->
     <description>  
@@ -365,6 +375,8 @@
     <eval> Sensor_Value / 6 * 100 </eval>
   </parameter>
 
+    <!-- Pseudosensors for testung purposes -->
+
   <parameter id="TestValue0">
     <description>
       <name>TestValue0 name</name>
@@ -384,6 +396,13 @@
     <eval>0.9</eval>
   </parameter>
   <parameter id="TestValue1">
+    <base></base>
+    <eval>1.0</eval>
+  </parameter>
+  <parameter id="TestValueOn">
+    <description>
+      <unit>0ff/On</unit>
+    </description>
     <base></base>
     <eval>1.0</eval>
   </parameter>
@@ -411,21 +430,10 @@
   </parameter>
   <parameter id="TestValue100Seconds">
     <description>
-      <name>Test runtime</name>
+      <name>Value in seconds</name>
       <unit>seconds</unit>
-      <description>Some value in seconds</description>
     </description>
     <base></base>
     <eval>100.0</eval>
   </parameter>
-
-  <parameter id="Verify_ClutchSlipping">
-    <description>
-      <unit>0ff/On</unit>
-    </description>
-    <base-raw> Core0B </base-raw>
-    <value-24>1</value-24>
-    <bit>0</bit>
-  </parameter>
-
 </parameters>
