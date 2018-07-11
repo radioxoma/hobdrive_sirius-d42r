@@ -99,6 +99,21 @@
     </grid>
   </section>
 
+  <section name="Test speed" fixed="true">
+    <grid rows=",,," cols=",,">
+      <item id="Speed" /> <!-- Если включён патч неправильных значений, то Patches.Speed, иначе Common.Speed -->
+      <item id="Common.Speed" /> <!-- Derived from OBD2.Speed -->
+      <item id="OBD2.Speed" />   <!-- Base for Common.Speed -->
+      <item id="Sirius.Speed" />
+      <item id="Speed0B" />
+      <item id="Speed0C" />
+      <item id="GPSSpeed" />
+      <item id="GPSOBD2SpeedDiff" />
+      <item id="ReversedGPSOBD2SpeedDiff" />
+      <item id="Patches.Speed" />
+      <item id="ShiftPositionHelp" />
+    </grid>
+  </section>
 
 <!--     <section name="Test" fixed="true">
         <grid rows="," cols=",">
@@ -133,8 +148,5 @@ RUN
     Fuel system status
     ECT
     Engine load?
-    Уровень топлива от ECU усреднённый
-        Запас хода по топливу
-        Скорость?
  -->
 </ui>
