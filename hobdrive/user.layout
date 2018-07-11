@@ -29,11 +29,12 @@
     </union>
     <union>
       <grid rows="," cols="">
-        <!-- switch (43.76 - svalue("Sirius.ECUFuelLevelAvgL") < 0.35) ? 1 : 0}, than Full -->
         <item id="Sirius.ECUFuelLevelAvgL" precision="0" text-align="center" size="huge" period="10000" />
-        <item id="Sirius.ECUFuelLevelAvgL" precision="2"
-            text-evaluator='$${43.76 - svalue("Sirius.ECUFuelLevelAvgL")}'
-            custom-description='Использовано топлива, л' size="huge" period="10000"/>
+        <!-- Show "Full" or consumed fuel volume -->
+        <switch index='$${43.76 - svalue("Sirius.ECUFuelLevelAvgL") &lt; 0.35 ? 0 : 1 }'>
+          <item id="Sirius.ECUFuelLevelAvgL" type="text" custom-description="Full tank" text-evaluator="Full" size="huge" color-map="$Color_green" colored-value="true" period="10000"/>
+          <item id="Sirius.ECUFuelLevelAvgL" precision="2" custom-description='Использовано топлива, л' text-evaluator='$${43.76 - svalue("Sirius.ECUFuelLevelAvgL")}' size="huge" period="10000"/>
+        </switch>
       </grid>
     </union>
     <item id="Sirius.ECUOdometer" precision="1" size="huge" />

@@ -268,8 +268,7 @@
       <name>ECU ID</name>
     </description>
     <raw> 210E </raw>
-    <offset> 4 </offset>
-    <text/>
+    <text offset="4"/>
   </parameter>
 
 
