@@ -213,8 +213,8 @@
   </parameter>
 
   <parameter id="Speed0B">
-    <!-- Untested -->
     <description>  
+      <name>Speed approx</name>
       <unit>kph</unit>
       <description>Speed from 210B with approximation. Check on idle too</description>  
     </description>
@@ -251,10 +251,9 @@
   </parameter>
 
   <parameter id="Speed0C">
-    <!-- Untested -->
-    <description>  
+    <description>
       <unit>kph</unit>
-      <description>Speed from 210C without approximation</description>  
+      <description>Speed from 210C without approximation (equal to OBD2.Speed and Sirius.Speed)</description>  
     </description>
     <base-raw> Core0C </base-raw>
     <value-9>1</value-9>
@@ -330,14 +329,16 @@
   </parameter>
 
 
-  <parameter id="ReversedGPSOBD2SpeedDiff">
+<!-- В оригинальнм датчик разница "Common.Speed - GPS.GPSSpeed", где Common.Speed = OBD2.Speed * коэффициент.
+Этот датчик рассчитывает разницу между скоростью ECU и GPS без попавочного коэффициента -->
+  <parameter id="GPSOBD2SpeedDiff_Nocorr">
     <description>
-      <name>GPS vs OBD Speed</name>
+      <name>GPS vs OBD Speed no corr</name>
       <unit>km/h</unit>
-      <description>GPS vs OBD speed (with correction coefficient), replacement for paid GPSOBD2SpeedDiff</description>
+      <description>GPS vs OBD speed (without correction coefficient), alternative to GPSOBD2SpeedDiff</description>
     </description>
-    <base> GPS.GPSSpeed </base>
-    <base2> OBD2.Speed </base2> <!-- Common.Speed в оригинальнм датчике -->
+    <base> OBD2.Speed </base>
+    <base2> GPS.GPSSpeed </base2>
     <eval>Sensor_Value - Sensor2_Value</eval>
   </parameter>
 

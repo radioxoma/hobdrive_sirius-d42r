@@ -100,18 +100,16 @@
   </section>
 
   <section name="Test speed" fixed="true">
-    <grid rows=",,," cols=",,">
-      <item id="Speed" /> <!-- Если включён патч неправильных значений, то Patches.Speed, иначе Common.Speed -->
+    <grid rows=",," cols=",,">
       <item id="Common.Speed" /> <!-- Derived from OBD2.Speed -->
-      <item id="OBD2.Speed" />   <!-- Base for Common.Speed -->
-      <item id="Sirius.Speed" />
-      <item id="Speed0B" />
-      <item id="Speed0C" />
+        <item id="Speed0B" />
+        <item />
+          <item id="OBD2.Speed" />   <!-- Base for Common.Speed -->
+          <item id="Sirius.Speed" />
+          <item id="Speed0C" />
       <item id="GPSSpeed" />
       <item id="GPSOBD2SpeedDiff" />
-      <item id="ReversedGPSOBD2SpeedDiff" />
-      <item id="Patches.Speed" />
-      <item id="ShiftPositionHelp" />
+      <item id="GPSOBD2SpeedDiff_Nocorr" />
     </grid>
   </section>
 
