@@ -342,6 +342,15 @@
     <eval>Sensor_Value - Sensor2_Value</eval>
   </parameter>
 
+  <parameter id="GPSOBD2Coeff">
+    <description>
+      <name>OBD2/GPS Speed coefficient</name>
+    </description>
+    <base> OBD2.Speed </base>
+    <base2> GPS.GPSSpeed </base2>
+    <eval>Sensor_Value / Sensor2_Value</eval>
+  </parameter>
+
   <!-- <item id="TestValue1" text-evaluator='${round(svalue("FuelInTank") / svalue("FuelLevel") * 100)}' /> -->
   <parameter id="ReversedTankVolume">
     <description>
