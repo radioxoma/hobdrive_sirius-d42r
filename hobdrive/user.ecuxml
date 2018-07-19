@@ -214,9 +214,10 @@
 
   <parameter id="Speed0B">
     <description>  
-      <name>Speed approx</name>
+      <name>Speed from cluster</name>
       <unit>kph</unit>
-      <description>Speed from 210B with approximation. Check on idle too</description>  
+      <description>Немного завышенная скорость, которую отображает спидометр прибоной панели.</description>
+      <!-- Показывает 2 км/ч на холостых после остановки -->
     </description>
     <base-raw> Core0B </base-raw>
     <value-28>1</value-28>
@@ -253,7 +254,8 @@
   <parameter id="Speed0C">
     <description>
       <unit>kph</unit>
-      <description>Speed from 210C without approximation (equal to OBD2.Speed and Sirius.Speed)</description>  
+      <description>Real speed (equal to OBD2.Speed and Sirius.Speed). No artificial modifications</description>
+      <!-- ECU relies on this speed. Tyres will affect it. -->
     </description>
     <base-raw> Core0C </base-raw>
     <value-9>1</value-9>

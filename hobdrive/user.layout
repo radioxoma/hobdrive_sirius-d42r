@@ -16,14 +16,16 @@
 
 <ui name="Dual Fuel" description="Custom layout for Chevy Aveo">
 
-  <!-- <section name="Fuel Details" visibility="False"></section> -->
+  <!-- Don't need these screens -->
+  <section name="General" visibility="False"></section>
+  <section name="Tank Details" visibility="False"></section>
 
   <!-- default-tripcomp.layout -->
   <section name="Tank Details ECU" fixed="true" title-height="20">
     <grid rows="" cols=",,">
     <union>
       <grid rows="," cols="">
-        <item id="CanRun6l100km" precision="0" text-align="center" size="small" />
+        <item id="CanRun6l100km" precision="0" text-align="center" size="normal" />
         <item id="Sirius.CanRunNoIdling" precision="0" size="huge" />
       </grid>
     </union>
@@ -65,25 +67,25 @@
 
   <section name="RUN" fixed="true" title-height="20">
     <grid rows="," cols=",,">
-    <union>
-      <grid rows="," cols="">
-        <item id="IntakeAirTemp" period="2000" size="huge" />
-        <item id="CoolantTemp" period="2000" size="huge" />
-      </grid>
-    </union>
-    <union>
-      <grid rows="," cols="">
-        <item id="ThrottlePosition" size="huge" precision="1" colored-value="true" red-green="20,2,1" />
-        <!-- Engine load 20% or below - idle without heater/defog/radio -->
-        <item id="EngineLoad" size="huge" colored-value="true" red-green="40,20" />
-      </grid>
-    </union>
-    <item id="RPM" size="huge" unit="hidden" />
-   <item id="InjectorPulseWidth" size="huge" units="none" color-map="0:$Color_green, 10: $Color_red, 15: #220000" type="chart" chart='point' />
-    <item id="Sirius.PowertrainState" size="huge"
-        text-values="0: STOP, 1: 1 crank?, 2:IDLE, 3: DRIVE, 4:DECEL?, 5: TRIM, 6: 6 nonexist?"
-        colored-value="true" color-map="0: #a0a0a0, 1: $Color_red, 2: $Color_white, 3:$Color_yellow, 5:$Color_green" />
-    <item id="Speed" size="huge" />
+      <union>
+        <grid rows="," cols="">
+          <item id="IntakeAirTemp" period="2000" size="huge" />
+          <item id="CoolantTemp" period="2000" size="huge" />
+        </grid>
+      </union>
+      <union>
+        <grid rows="," cols="">
+          <item id="ThrottlePosition" size="huge" precision="1" colored-value="true" red-green="20,2,1" />
+          <!-- Engine load 20% or below - idle without heater/defog/radio -->
+          <item id="EngineLoad" size="huge" colored-value="true" red-green="40,20" />
+        </grid>
+      </union>
+      <item id="InjectorPulseWidth" size="huge" units="none" color-map="0:$Color_green, 10: $Color_red, 15: #220000" type="chart" chart='point' />
+      <item id="RPM" size="huge" unit="hidden" />
+      <item id="Sirius.PowertrainState" size="huge"
+          text-values="0: STOP, 1: 1 crank?, 2:IDLE, 3: DRIVE, 4:DECEL?, 5: TRIM, 6: 6 nonexist?"
+          colored-value="true" color-map="0: #a0a0a0, 1: $Color_red, 2: $Color_white, 3:$Color_yellow, 5:$Color_green" />
+      <item id="Speed" size="huge" />
     </grid>
    </section>
 
@@ -91,7 +93,7 @@
     <grid rows="," cols=",,">
       <item id="FuelSystemStatus" size="huge" units="none" custom-description="FSS" colored-value="true" color-map="0:, 1:$Color_red, 256:$Color_red, 512: $Color_green, 1024: $Color_white, 2048: $Color_red, 4096: $Color_red" />
       <item id="Sirius.PowertrainState" size="huge"
-        text-values="0: STOP, 1: 1 crank?, 2:IDLE, 3: DRIVE, 4:DECEL?, 5: TRIM, 6: 6 nonexist?"
+        text-values="0: STOP, 1: 1 crank?, 2:IDLE, 3: DRIVE, 4:DECELERATION, 5: TRIM"
         colored-value="true" color-map="0: #a0a0a0, 1: $Color_red, 2: $Color_white, 3:$Color_yellow, 5:$Color_green" />
       <item id="Sirius.Drive" />
       <item id="Sirius.Brake" />
