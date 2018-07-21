@@ -291,6 +291,8 @@
     <description>
       <name>Needed idle RPM</name>
       <description>From 1275 RPM on cold (-16 C) to 713 RPM on heated up (79.5 C) engine(</description>
+      <!-- Во время движения (на прогретом, на 5-ой передаче, 2500 RPM) значение 800 RPM
+      Возможно на холостых достаточно 713 RPM -->
       <unit>rpm</unit>
     </description>
     <base-raw> CoreD </base-raw>
@@ -346,10 +348,11 @@
 
   <parameter id="GPSOBD2Coeff">
     <description>
-      <name>OBD2/GPS Speed coefficient</name>
+      <name>GPS/OBD2 speed coefficient</name>
+      <description>Multiple it with OBD2 speed and get real speed</description>
     </description>
-    <base> OBD2.Speed </base>
-    <base2> GPS.GPSSpeed </base2>
+    <base> GPS.GPSSpeed </base>
+    <base2> OBD2.Speed </base2>
     <eval>Sensor_Value / Sensor2_Value</eval>
   </parameter>
 
