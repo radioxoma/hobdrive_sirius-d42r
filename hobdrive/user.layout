@@ -80,15 +80,23 @@
       </union>
       <union>
         <grid rows="," cols="">
-          <item id="ThrottlePosition" size="huge" precision="0" colored-value="true" color-map="1: $Color_white, 2: $Color_green, 12: $Color_green, 13: $Color_yellow, 50: $Color_yellow, 51: $Color_red" />
-          <item id="EngineLoad" size="huge" precision="0" colored-value="true" red-green="80,50" />
+          <item id="ThrottlePosition" size="huge" precision="0" colored-value="true"
+            color-map="1: $Color_white, 1.1: $Color_green, 12: $Color_green, 13: $Color_yellow, 50: $Color_yellow, 51: $Color_red" />
+          <item id="EngineLoad" size="huge" precision="0" colored-value="true"
+            color-map="0: #a0a0a0, 1: $Color_green, 25: $Color_green, 26: $Color_yellow, 50: $Color_yellow, 80: $Color_red" />
         </grid>
       </union>
-      <item id="InjectorPulseWidth" size="huge" units="none" color-map="6:$Color_green, 10: $Color_red, 15: #220000" type="chart" chart='point' />
+      <union>
+        <grid rows="," cols="">
+          <item id="InjectorPulseWidth" size="huge" units="none" color-map="0: #a0a0a0, 0.1:$Color_green, 6:$Color_green, 10: $Color_red, 15: #220000" type="chart" chart='point' />
+          <item id="FuelEconomy_short" size="huge" />
+        </grid>
+      </union>
       <item id="RPM" size="huge" unit="hidden" />
       <item id="Sirius.PowertrainState" size="huge"
-          text-values="0: STOP, 1: 1 crank?, 2:IDLE, 3: DRIVE, 4:DECEL, 5: TRIM, 6: 6 nonexist?"
-          colored-value="true" color-map="0: #a0a0a0, 1: $Color_red, 2: $Color_white, 3:$Color_yellow, 5:$Color_green" />
+          text-values="0: STOP, 1: 1 crank?, 2:IDLE, 3: DRIVE, 4:DECEL, 5: TRIM"
+          colored-value="true"
+          color-map="0: #a0a0a0, 1: $Color_red, 2: $Color_white, 3:$Color_yellow, 5:$Color_green" />
       <item id="Speed" size="huge" />
     </grid>
    </section>
