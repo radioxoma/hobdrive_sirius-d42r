@@ -80,7 +80,7 @@
       </union>
       <union>
         <grid rows="," cols="">
-          <item id="ThrottlePosition" size="huge" precision="0" colored-value="true" red-green="78,12" />
+          <item id="ThrottlePosition" size="huge" precision="0" colored-value="true" color-map="1: $Color_white, 2: $Color_green, 12: $Color_green, 13: $Color_yellow, 50: $Color_yellow, 51: $Color_red" />
           <item id="EngineLoad" size="huge" precision="0" colored-value="true" red-green="80,50" />
         </grid>
       </union>
@@ -112,7 +112,7 @@
         <item id="GPSOBD2Coeff" precision="3"/>
           <item />   <!-- Base for Common.Speed -->
           <item id="Sirius.Speed" />
-          <item id="ThrottlePosition" size="huge" precision="0" colored-value="true" color-map="0: $Color_white, 12: $Color_green, 20: $Color_yellow, 40: $Color_red" />
+          <item />
       <item id="GPSSpeed" />
       <item id="GPSOBD2SpeedDiff" />
       <item id="GPSOBD2SpeedDiff_Nocorr" />
