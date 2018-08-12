@@ -264,7 +264,7 @@
   <parameter id="PowertrainState">
     <description>
       <name>Engine state</name>
-      <description>0-не вращается, 1- один раз при заводе-стартер?, 2-ХХ, 3-'не ХХ' с подачей топлива (открыта ДЗ), 4-начало спада оборотов, 5-отсечка топлива</description>
+      <description>0-не вращается, 1-работает стартер, 2-ХХ, 3-'не ХХ' с подачей топлива (открыта ДЗ), 4-начало спада оборотов, 5-отсечка топливоподачи</description>
     </description>
     <base-raw> Core0C </base-raw>
     <value-33></value-33>
