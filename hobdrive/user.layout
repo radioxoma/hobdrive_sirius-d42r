@@ -20,28 +20,6 @@
   <section name="General" visibility="False"></section>
   <section name="Tank Details" visibility="False"></section>
 
-  <!-- default-tripcomp.layout -->
-  <section name="Tank Details ECU" fixed="true" title-height="20">
-    <grid rows="" cols=",,">
-    <union>
-      <grid rows="," cols="">
-        <item id="CanRun6l100km" precision="0" text-align="center" size="normal" />
-        <item id="Sirius.CanRunNoIdling" precision="0" size="huge" />
-      </grid>
-    </union>
-    <union>
-      <grid rows="," cols="">
-        <item id="Sirius.ECUFuelLevelAvgL" precision="0" text-align="center" size="huge" period="10000" />
-        <!-- Show "Full" or consumed fuel volume -->
-        <switch index='$${100 - svalue("Sirius.ECUFuelLevelAvg") &lt; 3 ? 0 : 1 }'>
-          <item id="Sirius.ECUFuelLevelAvgL" type="text" custom-description="Full tank" text-evaluator="Full" size="huge" color-map="$Color_green" colored-value="true" period="10000"/>
-          <item id="Sirius.ECUFuelLevelAvgL" precision="2" custom-description='Использовано топлива, л' text-evaluator='$${43.76 - svalue("Sirius.ECUFuelLevelAvgL")}' size="huge" period="10000"/>
-        </switch>
-      </grid>
-    </union>
-    <item id="Sirius.ECUOdometer" precision="1" size="huge" />
-    </grid>
-  </section>
 
   <section name="Heat up" fixed="true" title-height="20">
     <!-- Is engine heated up and ready to move the car? -->
@@ -135,6 +113,29 @@
       <item id="Speed" size="huge" />
     </grid>
    </section>
+
+  <!-- default-tripcomp.layout -->
+  <section name="Tank Details ECU" fixed="true" title-height="20">
+    <grid rows="" cols=",,">
+    <union>
+      <grid rows="," cols="">
+        <item id="CanRun6l100km" precision="0" text-align="center" size="normal" />
+        <item id="Sirius.CanRunNoIdling" precision="0" size="huge" />
+      </grid>
+    </union>
+    <union>
+      <grid rows="," cols="">
+        <item id="Sirius.ECUFuelLevelAvgL" precision="0" text-align="center" size="huge" period="10000" />
+        <!-- Show "Full" or consumed fuel volume -->
+        <switch index='$${100 - svalue("Sirius.ECUFuelLevelAvg") &lt; 3 ? 0 : 1 }'>
+          <item id="Sirius.ECUFuelLevelAvgL" type="text" custom-description="Full tank" text-evaluator="Full" size="huge" color-map="$Color_green" colored-value="true" period="10000"/>
+          <item id="Sirius.ECUFuelLevelAvgL" precision="2" custom-description='Использовано топлива, л' text-evaluator='$${43.76 - svalue("Sirius.ECUFuelLevelAvgL")}' size="huge" period="10000"/>
+        </switch>
+      </grid>
+    </union>
+    <item id="Sirius.ECUOdometer" precision="1" size="huge" />
+    </grid>
+  </section>
 
   <section name="Test" fixed="false">
     <grid rows="," cols=",,">
