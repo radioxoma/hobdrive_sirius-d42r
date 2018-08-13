@@ -33,7 +33,7 @@
       <union>
         <grid rows="," cols="">
           <item id="Sirius.RunTime" period="1000" />
-          <item id="FuelSystemStatus" units="none" custom-description="FSS" color-map="0:, 1:$Color_red, 256:$Color_red, 512: $Color_green, 1024: $Color_white, 2048: $Color_red, 4096: $Color_red" />
+          <item id="FuelSystemStatus" units="none" custom-description="FSS" colored-value="true" color-map="1: $Color_red, 256: $Color_red, 512: $Color_green, 1024: $Color_red, 2048: $Color_red, 4096: $Color_red" />
         </grid>
       </union>
       <union>
@@ -125,7 +125,8 @@
     </union>
     <union>
       <grid rows="," cols="">
-        <item id="Sirius.ECUFuelLevelAvgL" precision="0" text-align="center" size="huge" period="10000" />
+        <item id="Sirius.ECUFuelLevelAvgL" precision="0" text-align="center" size="huge" period="10000" colored-value="true" color-map="0: $Color_red, 4: $Color_red, 10: $Color_yellow, 11: $Color_white" />
+        <!-- Постарайся подсветить жёлтым, когда останется 1/4 бака -->
         <!-- Show "Full" or consumed fuel volume -->
         <switch index='$${100 - svalue("Sirius.ECUFuelLevelAvg") &lt; 3 ? 0 : 1 }'>
           <item id="Sirius.ECUFuelLevelAvgL" type="text" custom-description="Full tank" text-evaluator="Full" size="huge" color-map="$Color_green" colored-value="true" period="10000"/>
