@@ -53,7 +53,7 @@
         </grid>
       </union>
       <item id="InjectorPulseWidth" size="huge" units="none" color-map="0: #a0a0a0, 0.1:$Color_green, 6:$Color_green, 10: $Color_red, 15: #220000" type="chart" chart='point' />
-      <item id="FuelPerHour" />
+      <item id="Sirius.TimeToHeatUp60" />
       <item id="Sirius.ControlModuleVoltage" precision="2" />
     </grid>
   </section>
