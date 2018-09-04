@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<gauges>
+  <variable id="Color_gray" value="${color(lerp(Color_normal; 0xa0a0a0; 0.7))}"/>
+  <variable id="Color_cyan" value="${color(lerp(Color_normal; 0x00FFFF; 0.7))}"/>
+  <variable id="Color_brown" value="${color(lerp(Color_normal; 0x220000; 0.7))}"/>
+</gauges>
