@@ -32,7 +32,16 @@
       </union>
       <union>
         <grid rows="," cols="">
-          <item id="Sirius.RunTime" period="1000" />
+            <!-- S -->
+            <switch index='$${svalue("Sirius.CoolantTemp") &gt; 30 ? 0 : 1 }' >
+              <item id="Sirius.RunTime" period="1000" />
+              <union>
+                <grid rows="," cols="">
+                  <item id="Sirius.RunTime" period="1000" />
+                  <item id="Sirius.TimeToHeatUp" colored-value="true" color-map="#00FFFF" />
+                </grid>
+              </union>
+            </switch>
           <item id="FuelSystemStatus" units="none" custom-description="FSS" colored-value="true" color-map="1: $Color_red, 256: $Color_red, 512: $Color_green, 1024: $Color_red, 2048: $Color_red, 4096: $Color_red" />
         </grid>
       </union>
@@ -53,8 +62,7 @@
         </grid>
       </union>
       <item id="InjectorPulseWidth" size="huge" units="none" color-map="0: #a0a0a0, 0.1:$Color_green, 6:$Color_green, 10: $Color_red, 15: #220000" type="chart" chart='point' />
-      <!-- Show "Warm" if time <1 second -->
-      <item id="Sirius.TimeToHeatUp" text-values="1: Warm" />
+      <item id="FuelPerHour" size="huge" />
       <item id="Sirius.ControlModuleVoltage" precision="2" />
     </grid>
   </section>
@@ -165,15 +173,13 @@
     </grid>
   </section>
 
-<!--     <section name="Test" fixed="true">
+    <section name="Test" fixed="true">
         <grid rows="," cols=",">
-           <item id="TestValue0" red-green="0, @Tank" />
-           <item id="TestValue1" red-green="0, @tank" />
-           <item id="TestValuePoint9" colored-value="true" precision="1" red-green="20,1,0" />
-           <item id="TestValue1" colored-value="true" red-green="20,1,0" />
-           <item id="TestValue60" colored-value="true" red-green="20,1,0" />
+           <item id="TestValue0" text-values="1:, 4: one" />
+           <item id="TestValue1" text-values="1:, 4: one" />
+           <item id="TestValue60" text-values="1:, 4: one" />
         </grid>
-    </section> -->
+    </section>
 
  <!--     <section name="Apps" fixed="true">
     <grid rows=",," cols=",,">
