@@ -390,15 +390,15 @@
     <eval> Sensor_Value / 6 * 100 </eval>
   </parameter>
 
-  <parameter id="TimeToHeatUp60">
+  <parameter id="TimeToHeatUp">
     <description>
       <name>Time to heatup</name>
       <unit>seconds</unit>
-      <description>Time on idle until ECF reaches 60 °C</description>
+      <description>Time on idle until ECF reaches 30 °C</description>
     </description>
     <base> Sirius.CoolantTemp </base>
-    <!-- Empiric first degree polynominal for my B12D1 engine-->
-    <eval> 10.8 * (60 - Sensor_Value) </eval>
+    <!-- Empiric first degree polynominal for my B12D1 engine (no load or fan) -->
+    <eval> 10.8 * (30 - Sensor_Value) </eval>
   </parameter>
 
     <!-- Pseudosensors for testung purposes -->

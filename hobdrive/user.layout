@@ -53,7 +53,8 @@
         </grid>
       </union>
       <item id="InjectorPulseWidth" size="huge" units="none" color-map="0: #a0a0a0, 0.1:$Color_green, 6:$Color_green, 10: $Color_red, 15: #220000" type="chart" chart='point' />
-      <item id="Sirius.TimeToHeatUp60" />
+      <!-- Show "Warm" if time <1 second -->
+      <item id="Sirius.TimeToHeatUp" text-values="1: Warm" />
       <item id="Sirius.ControlModuleVoltage" precision="2" />
     </grid>
   </section>
@@ -130,11 +131,11 @@
         <!-- Show "Full" or consumed fuel volume -->
         <switch index='$${100 - svalue("Sirius.ECUFuelLevelAvg") &lt; 3 ? 0 : 1 }'>
           <item id="Sirius.ECUFuelLevelAvgL" type="text" custom-description="Full tank" text-evaluator="Full" size="huge" color-map="$Color_green" colored-value="true" period="10000"/>
-          <item id="Sirius.ECUFuelLevelAvgL" precision="2" custom-description='Использовано топлива, л' text-evaluator='$${43.76 - svalue("Sirius.ECUFuelLevelAvgL")}' size="huge" period="10000"/>
+          <item id="Sirius.ECUFuelLevelAvgL" precision="2" custom-description='Использовано топлива, л' text-evaluator='$${43.76 - svalue("Sirius.ECUFuelLevelAvgL")}' size="huge" period="10000" />
         </switch>
       </grid>
     </union>
-    <item id="Sirius.ECUOdometer" precision="1" size="huge" />
+    <item id="Sirius.ECUOdometer" precision="1" size="huge" units="none" period="10000"/>
     </grid>
   </section>
 
@@ -150,7 +151,7 @@
     </grid>
   </section>
 
-  <section name="Test speed" fixed="true">
+  <section name="Test speed" fixed="false">
     <grid rows=",," cols=",,">
       <item id="Common.Speed" /> <!-- Derived from OBD2.Speed -->
         <item id="Speed0B" />
