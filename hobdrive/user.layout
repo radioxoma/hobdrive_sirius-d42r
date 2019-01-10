@@ -117,7 +117,13 @@
           text-values="0: STOP, 1: CRANK, 2:IDLE, 3: DRIVE, 4:DECEL, 5: TRIM"
           colored-value="true"
           color-map="0: $Color_gray, 1: $Color_red, 2: $Color_white, 3:$Color_yellow, 5:$Color_green" />
-      <item id="Speed" size="huge" colored-value="true" color-map="0: $Color_gray" />
+      <item id="Speed" size="huge" colored-value="true" color-map="
+        0: $Color_gray,
+        1: $Color_white,
+        90: $Color_white,
+        95: $Color_yellow,
+        100: $Color_yellow,
+        101: $Color_red" />
     </grid>
    </section>
 
